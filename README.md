@@ -1,10 +1,11 @@
 # ESP32 IDF tooling in container
 
+
 ## Use the image
 
 To build your ESP32 project in current directory, run:
 ```sh
-podman container runlabel run burgrp/esp-idf:v5.0-beta1 idf.py build
+podman container runlabel run burgrp/esp-idf:v4.4.2 idf.py build
 ```
 
 ## Dev notes
@@ -12,5 +13,5 @@ podman container runlabel run burgrp/esp-idf:v5.0-beta1 idf.py build
 ### Build and push the image
 
 ```sh
-./build-image v5.0-beta1
+./build-image v4.4.2
 ```
