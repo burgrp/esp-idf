@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -e
+
+IDF_VERSION=$1
+
+if [ -z $IDF_VERSION ]
+then
+    echo "Use: $(basename $0) <idf-version>"
+    exit 1
+fi
+
+IMAGE_NAME=ghcr.io/burgrp/esp-idf:$IDF_VERSION
+
+podman build . --build-arg IDF_VERSION=$IDF_VERSION --tag $IMAGE_NAME
+podman push $IMAGE_NAME
