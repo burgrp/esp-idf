@@ -4,7 +4,7 @@
 
 To build your ESP32 project in current directory, run:
 ```sh
-podman container runlabel run burgrp/esp-idf idf.py build
+podman container runlabel run burgrp/esp-idf:v5.0-beta1 idf.py build
 ```
 
 ## Dev notes
