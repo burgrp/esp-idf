@@ -30,6 +30,7 @@ RUN git clone -c advice.detachedHead=false --recursive --branch ${IDF_VERSION} -
 ENV IDF_TOOLS_PATH=/esp
 RUN ./install.sh all
 RUN ln -s /esp/idf/tools/idf.py /esp/idf/tools/idf
+RUN rm -rf $(find /esp -name ".git")
 
 ENV LC_ALL=C
 
