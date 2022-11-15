@@ -1,4 +1,5 @@
-FROM debian:11.5-slim
+FROM mcr.microsoft.com/devcontainers/base:debian
+#debian:11.5-slim
 
 ARG IDF_VERSION
 
@@ -28,15 +29,12 @@ RUN git clone -c advice.detachedHead=false --recursive --branch ${IDF_VERSION} -
 
 ENV IDF_TOOLS_PATH=/esp
 RUN ./install.sh all
-RUN ln -s /esp/idf/tools/idf.py /usr/bin/idf
+RUN ln -s /esp/idf/tools/idf.py /esp/idf/tools/idf
 
 ENV LC_ALL=C
 
-ENTRYPOINT ["bash", "-c", "source $IDF_PATH/export.sh && \"$@\"", "-s"]
-
 CMD ["bash"]
 
-LABEL RUN="podman run --rm -it --name esp-idf --env-host -v /home:/home -v /dev:/dev --workdir=\$PWD IMAGE"
 LABEL org.opencontainers.image.source https://github.com/burgrp/esp-idf.git
 LABEL org.opencontainers.image.description ESP32 IDF $IDF_VERSION tooling
 

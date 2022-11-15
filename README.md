@@ -1,17 +1,26 @@
 # ESP32 IDF tooling in container
 
 
-## Use the image
+## Use the image as VS Code dev container
 
-To build your ESP32 project in current directory, run:
+To start the dev container, run:
 ```sh
-podman container runlabel run burgrp/esp-idf:v4.4.2 idf.py build
+podman container runlabel dev ghcr.io/burgrp/esp-idf:v5.0-rc1
 ```
+
+## Use the image as one-shot idf command
+
+To build and flash project in the current directory, run:
+```sh
+podman container runlabel idf ghcr.io/burgrp/esp-idf:v5.0-rc1 flash
+```
+
+
 
 ## Dev notes
 
 ### Build and push the image
 
 ```sh
-./build-image v4.4.2
+./build-image
 ```
