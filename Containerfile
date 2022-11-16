@@ -1,7 +1,4 @@
 FROM mcr.microsoft.com/devcontainers/base:debian
-#debian:11.5-slim
-
-ARG IDF_VERSION
 
 RUN apt-get update
 RUN apt-get install -y \
@@ -25,12 +22,18 @@ RUN apt-get install -y \
 ENV IDF_PATH=/esp/idf
 
 WORKDIR $IDF_PATH
+
+ARG IDF_VERSION
 RUN git clone -c advice.detachedHead=false --recursive --branch ${IDF_VERSION} --depth 1 https://github.com/espressif/esp-idf.git .
 
 ENV IDF_TOOLS_PATH=/esp
 RUN ./install.sh all
 RUN ln -s /esp/idf/tools/idf.py /esp/idf/tools/idf
 RUN rm -rf $(find /esp -name ".git")
+
+ARG IMAGE_NAME
+COPY init /esp/init
+COPY init-project /usr/bin/
 
 ENV LC_ALL=C
 
