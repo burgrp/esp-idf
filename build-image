@@ -2,7 +2,7 @@
 
 set -e
 
-IDF_VERSION="${1:-v5.0-rc1}"
+IDF_VERSION="${1:-v5.0}"
 
 if [ -z $IDF_VERSION ]
 then

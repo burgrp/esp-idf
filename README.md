@@ -5,7 +5,7 @@
 ```
 mkdir my-project
 cd my-project
-podman container runlabel init burgrp/esp-idf:v5.0-rc1
+podman container runlabel init burgrp/esp-idf:v5.0
 ```
 ## Dev notes
 
